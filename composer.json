@@ -1,0 +1,14 @@
+{
+    "name": "mustyzod/gambio",
+    "type": "project",
+    "authors": [{
+        "name": "sodruldeen",
+        "email": "sodruldeen.mustapha@gunsel.com.tr"
+    }],
+    "autoload": {
+        "psr-4": {
+            "Gambio\\": "src/"
+        }
+    },
+    "require": {}
+}
