@@ -13,15 +13,11 @@ class Connection
 
     public function __construct($table)
     {
-        $this->dbName = 'gambioDb';
-        $this->host = 'localhost';
-        $this->username = 'root';
-        $this->username = 'root';
+        $this->dbName = $_ENV['DB_NAME'];
+        $this->host = $_ENV['DB_HOST'];
+        $this->username = $_ENV['DB_USERNAME'];
+        $this->password = $_ENV['DB_PASSWORD'];
         $this->table = $table;
-        // $this->dbName = env('');
-        // $this->host = env('');
-        // $this->username = env('');
-        // $this->password = env('');
     }
 
     /**
@@ -37,7 +33,7 @@ class Connection
     /**
      * Create data
      */
-    public function create($dataArray, $returnID = false)
+    public function create($dataArray)
     {
         $getColumnsKeys = array_keys($dataArray);
         $implodeColumnKeys = implode(",", $getColumnsKeys);
@@ -63,11 +59,24 @@ class Connection
         return $rows ?? [];
     }
     /**
+     * Search
+     */
+    public function findById($searchValue)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE id='" . $searchValue . "' AND deleted_at IS NULL";
+        $results = $this->instance->query($query);
+        $rows = [];
+        while ($row = mysqli_fetch_assoc($results)) {
+            $rows[] = $row;
+        }
+        return $rows ?? [];
+    }
+    /**
      * Fetch single Todo with parameter
      */
     public function findByValue($searchParam, $searchValue)
     {
-        $query = "SELECT * FROM " . $this->table . " WHERE " . $searchParam . "=" . $searchValue;
+        $query = "SELECT * FROM " . $this->table . " WHERE " . $searchParam . "='" . $searchValue . "' AND deleted_at IS NULL";
         $result = $this->instance->query($query);
         $result = $result->fetch_assoc();
         return $result ?? Null;
@@ -75,7 +84,7 @@ class Connection
     /**
      * Update Todo
      */
-    public function update($uuid, $data)
+    public function update($id, $data)
     {
         $update = 'UPDATE ' . $this->table . ' SET ';
         $keys = array_keys($data);
@@ -91,8 +100,7 @@ class Connection
                 $update .= ',';
             }
         }
-        $update .= 'WHERE uuid=' . $uuid;
-        exit($update);
+        $update .= 'WHERE id=' . $id . " AND deleted_at IS NULL";
 
         $result = $this->instance->query($update);
         if ($result) true ?? false;

@@ -10,5 +10,10 @@
             "Gambio\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "ramsey/uuid": "^4.1",
+        "phpmailer/phpmailer": "^6.1",
+        "league/oauth2-google": "^3.0",
+        "vlucas/phpdotenv": "^5.2"
+    }
 }

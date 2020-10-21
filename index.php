@@ -1,32 +1,34 @@
 <?php
-// include ('services/Database.php');
 
-use Gambio\Models\Todo;
-use Gambio\Models\TodoParticipant;
+use Gambio\Services\TodoService;
+use Dotenv\Dotenv as ENV;
 
 require_once realpath("vendor/autoload.php");
 
-$test = [
-    "name" => "sodruldeen",
-    "description" => "this is a description",
-    "uuid" => 654321,
-    "email"=>"sod@gmail.com"
+$dotenv = ENV::createImmutable(__DIR__);
+$dotenv->load();
+
+$task = [
+    "task" => "eat",
+    "todoUuid" => 1234
 ];
-// $test = [
-//     "todoId" => 654321,
-//     "participant_email" => "mustyzod@gmail.com"
-// ];
+$todo = [
+    "name" => "Example 2",
+    "description" => "this is a todo"
+];
+$participants = ["mustyzod@gmail.com", "zodbis@gmail.com"];
 
-$object = new Todo();
-// $results = $object->findAll();
-// foreach($results as $result){
-//     echo $result['id']."<br/>";
-//     // echo $result['name']."<br/>";
-//     // echo $result['created_at']."<br/>";
-// }
-// $one = $object->findById('todoId',654321);
-// $one = $object->findById(12345);
-// var_dump($one['participant_email']);
+$object = new TodoService();
 
-$delete = $object->create($test);
-// $delete = $object->destroy(123456);
+$result = $object->createTodo($todo, $participants);
+header('Content-type:application/json;charset=utf-8');
+http_response_code(200);
+echo json_encode([
+    "success" => true,
+    "todoId" => $result,
+    "message" => "Todo Creation Successful!!"
+]);
+// return json_encode([$result,"message"=>"Todo Creation Successful!!"]);
+// $result = $object->getTodo('04c9b00c-bbea-4cd9-99fe-18ddb532f147');
+// var_dump($result);
+// $result = $object->destroy(123456);

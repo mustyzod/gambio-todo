@@ -19,7 +19,7 @@ class TodoParticipant extends Database
      */
     public function createIfNotExist()
     {
-        $sql = "CREATE TABLE todo_participants (
+        $sql = "CREATE TABLE IF NOT EXISTS $this->table (
             id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             todoId INT(11) NOT NULL,
             participant_email VARCHAR(50) NULL,

@@ -19,7 +19,7 @@ class Todo extends Database
      */
     public function createIfNotExist()
     {
-        $sql = "CREATE TABLE todos (
+        $sql = "CREATE TABLE IF NOT EXISTS $this->table (
             id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(30) NOT NULL,
             description VARCHAR(50) NULL,
