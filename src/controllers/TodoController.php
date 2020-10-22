@@ -1,37 +1,38 @@
 <?php
+
 namespace Gambio\Controllers;
+
 use Gambio\Services\TodoService;
+use Gambio\Router\Request;
+use Gambio\Router\Response as Response;
 
 class TodoController extends TodoService
 {
     /**
      * Create Todo
      */
-    public function createTodoList($data, $participants)
+    public function createTodoList($request)
     {
-        $result = $this->createTodo($data, $participants);
-        header('Content-type:application/json;charset=utf-8');
-        http_response_code(200);
-        echo json_encode([
-            "success" => true,
-            "data" => $result,
-            "message" => "Todo Creation Successful!!"
-        ]);
+        $participants = [];
+        foreach ($request->getInput() as $key => $todo) {
+            if (gettype($todo) === 'array') {
+                $participants = $todo;
+            } else {
+                $todoData[$key] = $todo;
+            }
+        }
+        $result = $this->createTodo($todoData, $participants);
+        Response::json($result, 'Todo Creation Successful!');
     }
 
     /**
      * Add participants
      */
-    public function inviteParticipants($todoId,$participants)
+    public function inviteParticipants($uuid, $request)
     {
-        $addParticipant = $this->addParticipant($todoId,$participants);
-        header('Content-type:application/json;charset=utf-8');
-        http_response_code(200);
-        echo json_encode([
-            "success" => true,
-            "data" => $addParticipant,
-            "message" => "Participants Successfully Added!!"
-        ]);
+        $participants = $request->getInput('participants');
+        $result = $this->addParticipant($uuid, $participants);
+        Response::json($result, 'Participants Successfully Added!');
     }
 
     /**
@@ -40,41 +41,30 @@ class TodoController extends TodoService
     public function fetchTodo($uuid)
     {
         $result = $this->getTodo($uuid);
-        header('Content-type:application/json;charset=utf-8');
-        http_response_code(200);
-        echo json_encode([
-            "success" => true,
-            "data" => $result,
-            "message" => "Participants Successfully Added!!"
-        ]);
+        Response::json($result, 'Participants Successfully fetched!');
     }
     /**
      *  Create Todo Task
      */
-    public function createTodoTask($data){
-        $result = $this->createTask($data);
-        header('Content-type:application/json;charset=utf-8');
-        http_response_code(200);
-        echo json_encode([
-            "success" => true,
-            "task" => $result,
-            "message" => "Todo Creation Successful!!"
-        ]);
+    public function createTodoTask($request)
+    {
+        foreach ($request->getInput() as $key => $task) {
+            $todoTask[$key] = $task;
+        }
+        $result = $this->createTask($todoTask);
+        Response::json($result, 'Todo Creation Successful!!');
     }
 
     /**
      * Update Todo Task
      */
-    public function updateTodoTask($taskId,$data)
+    public function updateTodoTask($taskId, $request)
     {
-        $result = $this->updateTask($taskId,$data);
-        header('Content-type:application/json;charset=utf-8');
-        http_response_code(200);
-        echo json_encode([
-            "success" => true,
-            "data" => $result,
-            "message" => "Task Successfully Updated!!"
-        ]);
+        foreach ($request->getInput() as $key => $task) {
+            $todoTask[$key] = $task;
+        }
+        $result = $this->updateTask($taskId, $todoTask);
+        Response::json($result, 'Task Successfully Updated!');
     }
 
     /**
@@ -83,12 +73,6 @@ class TodoController extends TodoService
     public function deleteTodoTask($taskId)
     {
         $result = $this->deleteTask($taskId);
-        header('Content-type:application/json;charset=utf-8');
-        http_response_code(200);
-        echo json_encode([
-            "success" => true,
-            "data" => $result,
-            "message" => "Task Deleted!!"
-        ]);
+        Response::json($result, 'Task Deleted!');
     }
 }
