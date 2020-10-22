@@ -131,6 +131,7 @@ class ComposerStaticInitad09be8cdb69075643e966d79df5bf5e
     );
 
     public static $classMap = array (
+        'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',
@@ -188,9 +189,14 @@ class ComposerStaticInitad09be8cdb69075643e966d79df5bf5e
         'Dotenv\\Util\\Str' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Str.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
         'Gambio\\Connections\\Connection' => __DIR__ . '/../..' . '/src/services/Database.php',
+        'Gambio\\Controllers\\AboutUs' => __DIR__ . '/../..' . '/src/controllers/AboutUs.php',
+        'Gambio\\Controllers\\Controller' => __DIR__ . '/../..' . '/src/controllers/Controller.php',
+        'Gambio\\Controllers\\TodoController' => __DIR__ . '/../..' . '/src/controllers/TodoController.php',
         'Gambio\\Models\\Todo' => __DIR__ . '/../..' . '/src/model/Todo.model.php',
         'Gambio\\Models\\TodoParticipant' => __DIR__ . '/../..' . '/src/model/TodoPartcipant.model.php',
         'Gambio\\Models\\TodoTask' => __DIR__ . '/../..' . '/src/model/TodoTask.model.php',
+        'Gambio\\Router\\Route' => __DIR__ . '/../..' . '/src/route/Routes.php',
+        'Gambio\\Router\\Router' => __DIR__ . '/../..' . '/src/route/Router.php',
         'Gambio\\Services\\EmailService' => __DIR__ . '/../..' . '/src/services/EmailService.php',
         'Gambio\\Services\\TodoService' => __DIR__ . '/../..' . '/src/services/TodoService.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',

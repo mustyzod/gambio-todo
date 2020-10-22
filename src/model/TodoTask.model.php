@@ -23,7 +23,7 @@ class TodoTask extends Database
             id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             task VARCHAR(30) NOT NULL,
             todoId int(11),
-            status BOOLEAN NOT NULL,
+            status BOOLEAN DEFAULT 0,
             deadline TIMESTAMP NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,

@@ -1,34 +1,50 @@
 <?php
 
-use Gambio\Services\TodoService;
+use Gambio\Controllers\TodoController;
+use Gambio\Controllers\Controller;
+use Gambio\Router\Route;
 use Dotenv\Dotenv as ENV;
 
 require_once realpath("vendor/autoload.php");
-
 $dotenv = ENV::createImmutable(__DIR__);
 $dotenv->load();
 
 $task = [
     "task" => "eat",
-    "todoUuid" => 1234
+    "todoId" => 1
+];
+$taskUpdate = [
+    "task" => "drink",
+    "status" => 1
 ];
 $todo = [
-    "name" => "Example 2",
+    "name" => "Mustapha 2",
     "description" => "this is a todo"
 ];
 $participants = ["mustyzod@gmail.com", "zodbis@gmail.com"];
 
-$object = new TodoService();
+// $object = new TodoController();
 
-$result = $object->createTodo($todo, $participants);
-header('Content-type:application/json;charset=utf-8');
-http_response_code(200);
-echo json_encode([
-    "success" => true,
-    "todoId" => $result,
-    "message" => "Todo Creation Successful!!"
-]);
-// return json_encode([$result,"message"=>"Todo Creation Successful!!"]);
-// $result = $object->getTodo('04c9b00c-bbea-4cd9-99fe-18ddb532f147');
-// var_dump($result);
-// $result = $object->destroy(123456);
+// $result = $object->createTodoList($todo,$participants);
+// $result = $object->inviteParticipants(17,$participants);
+// $results = $object->fetchTodo('fb04a1b2-f9fe-4328-a52b-8008ec1948f4');
+// $result = $object->createTodoTask($task);
+// $result = $object->updateTodoTask(5,$taskUpdate);
+// $result = $object->deleteTodoTask(5);
+
+// echo $_GET['url'];
+
+Route::set('to',function(){
+    // echo "home";
+    $todo = [
+    "name" => "Mustapha 2",
+    "description" => "this is a todo"
+];
+$participants = ["mustyzod@gmail.com", "zodbis@gmail.com"];
+    $todo=new TodoController();
+    $todo->fetchTodo('fb04a1b2-f9fe-4328-a52b-8008ec1948f4');
+});
+
+Route::set('todo',function(){
+    echo "todo";
+});

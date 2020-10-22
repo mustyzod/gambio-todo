@@ -42,7 +42,7 @@ class Connection
         $implodeValues = "'" . implode("','", $getValues) . "'";
 
         $qry = "insert into $this->table (" . $implodeColumnKeys . ") values (" . $implodeValues . ")";
-        $this->instance->query($qry);
+        $result = $this->instance->query($qry);
         return $this->instance->insert_id;
     }
     /**
@@ -61,15 +61,12 @@ class Connection
     /**
      * Search
      */
-    public function findById($searchValue)
+    public function findOne($searchParam,$searchValue)
     {
-        $query = "SELECT * FROM " . $this->table . " WHERE id='" . $searchValue . "' AND deleted_at IS NULL";
-        $results = $this->instance->query($query);
-        $rows = [];
-        while ($row = mysqli_fetch_assoc($results)) {
-            $rows[] = $row;
-        }
-        return $rows ?? [];
+        $query = "SELECT * FROM " . $this->table . " WHERE " . $searchParam . "='" . $searchValue . "' AND deleted_at IS NULL";
+        $result = $this->instance->query($query);
+        $result = mysqli_fetch_assoc($result);
+        return $result ?? Null;
     }
     /**
      * Fetch single Todo with parameter
@@ -78,8 +75,13 @@ class Connection
     {
         $query = "SELECT * FROM " . $this->table . " WHERE " . $searchParam . "='" . $searchValue . "' AND deleted_at IS NULL";
         $result = $this->instance->query($query);
-        $result = $result->fetch_assoc();
-        return $result ?? Null;
+        // $result = $result->fetch_assoc();
+        $rows = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $rows[] = $row;
+        }
+        return $rows ?? [];
+        // return $result ?? Null;
     }
     /**
      * Update Todo
@@ -100,7 +102,7 @@ class Connection
                 $update .= ',';
             }
         }
-        $update .= 'WHERE id=' . $id . " AND deleted_at IS NULL";
+        $update .= ' WHERE id=' . $id . " AND deleted_at IS NULL";
 
         $result = $this->instance->query($update);
         if ($result) true ?? false;
@@ -108,10 +110,11 @@ class Connection
     /**
      * Delete data
      */
-    public function destroy($uuid)
+    public function destroy($id)
     {
-        $query = "UPDATE " . $this->table . " SET deleted_at='" . date('Y-m-d H:i:s') . "' WHERE uuid=" . $uuid;
+        $query = "UPDATE " . $this->table . " SET deleted_at='" . date('Y-m-d H:i:s') . "' WHERE id=" . $id;
         $result = $this->instance->query($query);
+        return $result;
     }
     /**
      * 

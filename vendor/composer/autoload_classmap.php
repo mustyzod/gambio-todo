@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AltoRouter' => $vendorDir . '/altorouter/altorouter/AltoRouter.php',
     'Brick\\Math\\BigDecimal' => $vendorDir . '/brick/math/src/BigDecimal.php',
     'Brick\\Math\\BigInteger' => $vendorDir . '/brick/math/src/BigInteger.php',
     'Brick\\Math\\BigNumber' => $vendorDir . '/brick/math/src/BigNumber.php',
@@ -63,9 +64,14 @@ return array(
     'Dotenv\\Util\\Str' => $vendorDir . '/vlucas/phpdotenv/src/Util/Str.php',
     'Dotenv\\Validator' => $vendorDir . '/vlucas/phpdotenv/src/Validator.php',
     'Gambio\\Connections\\Connection' => $baseDir . '/src/services/Database.php',
+    'Gambio\\Controllers\\AboutUs' => $baseDir . '/src/controllers/AboutUs.php',
+    'Gambio\\Controllers\\Controller' => $baseDir . '/src/controllers/Controller.php',
+    'Gambio\\Controllers\\TodoController' => $baseDir . '/src/controllers/TodoController.php',
     'Gambio\\Models\\Todo' => $baseDir . '/src/model/Todo.model.php',
     'Gambio\\Models\\TodoParticipant' => $baseDir . '/src/model/TodoPartcipant.model.php',
     'Gambio\\Models\\TodoTask' => $baseDir . '/src/model/TodoTask.model.php',
+    'Gambio\\Router\\Route' => $baseDir . '/src/route/Routes.php',
+    'Gambio\\Router\\Router' => $baseDir . '/src/route/Router.php',
     'Gambio\\Services\\EmailService' => $baseDir . '/src/services/EmailService.php',
     'Gambio\\Services\\TodoService' => $baseDir . '/src/services/TodoService.php',
     'GrahamCampbell\\ResultType\\Error' => $vendorDir . '/graham-campbell/result-type/src/Error.php',
