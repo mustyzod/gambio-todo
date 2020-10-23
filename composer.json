@@ -2,8 +2,8 @@
     "name": "mustyzod/gambio",
     "type": "project",
     "authors": [{
-        "name": "sodruldeen",
-        "email": "sodruldeen.mustapha@gunsel.com.tr"
+        "name": "sodruldeen mustapha",
+        "email": "zodbis@gmail.com"
     }],
     "autoload": {
         "psr-4": {
@@ -11,9 +11,11 @@
         }
     },
     "require": {
-        "ramsey/uuid": "^4.1",
         "phpmailer/phpmailer": "^6.1",
         "league/oauth2-google": "^3.0",
         "vlucas/phpdotenv": "^5.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
     }
 }

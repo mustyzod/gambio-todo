@@ -26,20 +26,27 @@ class EmailService extends PHPMailer
     /**
      * Send email
      * 
-     * @param string $email,$message,$subject
+     * @param   string  $email,
+     * @param   string  $message
+     * @param   string  $subject
      * 
-     * @return array
+     * @return boolean
      */
-    public function sendMail($email, $message, $subject)
+
+    public function sendMail($email, $message, $subject): bool
     {
         try {
             $this->Subject = $subject;
             $this->addAddress($email);
             $this->Body = $message;
-            $this->send();
-            return $success['success'] = "Mail sent.";
+            return $this->send();
         } catch (Exception $e) {
             return $errors['mail'] = "Failed. Mailer error: {$this->ErrorInfo}";
         }
+    }
+    public function divideBy($num2)
+    {
+        if ($num2 == 0) return NAN;
+        return $this->getNumberFromUserInput() / $num2;
     }
 }

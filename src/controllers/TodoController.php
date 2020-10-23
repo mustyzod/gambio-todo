@@ -13,16 +13,20 @@ class TodoController extends TodoService
      */
     public function createTodoList($request)
     {
-        $participants = [];
-        foreach ($request->getInput() as $key => $todo) {
-            if (gettype($todo) === 'array') {
-                $participants = $todo;
-            } else {
-                $todoData[$key] = $todo;
+        try {
+            $participants = [];
+            foreach ($request->getInput() as $key => $todo) {
+                if (gettype($todo) === 'array') {
+                    $participants = $todo;
+                } else {
+                    $todoData[$key] = $todo;
+                }
             }
+            $result = $this->createTodo($todoData, $participants);
+            Response::json($result, 'Todo Creation Successful!');
+        } catch (\Exception $e) {
+            Response::json([], $e->getMessage(), 400);
         }
-        $result = $this->createTodo($todoData, $participants);
-        Response::json($result, 'Todo Creation Successful!');
     }
 
     /**
@@ -30,9 +34,13 @@ class TodoController extends TodoService
      */
     public function inviteParticipants($uuid, $request)
     {
-        $participants = $request->getInput('participants');
-        $result = $this->addParticipant($uuid, $participants);
-        Response::json($result, 'Participants Successfully Added!');
+        try {
+            $participants = $request->getInput('participants');
+            $result = $this->addParticipant($uuid, $participants);
+            Response::json($result, 'Participants Successfully Added!');
+        } catch (\Exception $e) {
+            Response::json([], $e->getMessage(), 400);
+        }
     }
 
     /**
@@ -40,19 +48,27 @@ class TodoController extends TodoService
      */
     public function fetchTodo($uuid)
     {
-        $result = $this->getTodo($uuid);
-        Response::json($result, 'Participants Successfully fetched!');
+        try {
+            $result = $this->getTodo($uuid);
+            Response::json($result, 'Data Successfully fetched!');
+        } catch (\Exception $e) {
+            Response::json([], $e->getMessage(), 400);
+        }
     }
     /**
      *  Create Todo Task
      */
     public function createTodoTask($request)
     {
-        foreach ($request->getInput() as $key => $task) {
-            $todoTask[$key] = $task;
+        try {
+            foreach ($request->getInput() as $key => $task) {
+                $todoTask[$key] = $task;
+            }
+            $result = $this->createTask($todoTask);
+            Response::json($result, 'Todo Creation Successful!!');
+        } catch (\Exception $e) {
+            Response::json([], $e->getMessage(), 400);
         }
-        $result = $this->createTask($todoTask);
-        Response::json($result, 'Todo Creation Successful!!');
     }
 
     /**
@@ -60,11 +76,15 @@ class TodoController extends TodoService
      */
     public function updateTodoTask($taskId, $request)
     {
-        foreach ($request->getInput() as $key => $task) {
-            $todoTask[$key] = $task;
+        try {
+            foreach ($request->getInput() as $key => $task) {
+                $todoTask[$key] = $task;
+            }
+            $result = $this->updateTask($taskId, $todoTask);
+            Response::json($result, 'Task Successfully Updated!');
+        } catch (\Exception $e) {
+            Response::json([], $e->getMessage(), 400);
         }
-        $result = $this->updateTask($taskId, $todoTask);
-        Response::json($result, 'Task Successfully Updated!');
     }
 
     /**
@@ -72,7 +92,11 @@ class TodoController extends TodoService
      */
     public function deleteTodoTask($taskId)
     {
-        $result = $this->deleteTask($taskId);
-        Response::json($result, 'Task Deleted!');
+        try {
+            $result = $this->deleteTask($taskId);
+            Response::json($result, 'Task Deleted!');
+        } catch (\Exception $e) {
+            Response::json([], $e->getMessage(), 400);
+        }
     }
 }

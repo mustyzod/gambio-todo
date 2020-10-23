@@ -16,8 +16,10 @@ class TodoTask extends Database
 
     /**
      * Create table if not exist
+     * 
+     * @return void
      */
-    public function createIfNotExist()
+    public function createIfNotExist(): void
     {
         $sql = "CREATE TABLE IF NOT EXISTS $this->table (
             id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -32,5 +34,4 @@ class TodoTask extends Database
         $this->connect();
         mysqli_query($this->instance, $sql);
     }
-    
 }

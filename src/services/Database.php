@@ -1,5 +1,5 @@
 <?php
-// Autoload required classes
+
 namespace Gambio\Connections;
 
 class Connection
@@ -21,12 +21,14 @@ class Connection
     }
 
     /**
-     * 
+     * Connect database
      */
     public function connect()
     {
         $connection = new \mysqli($this->host, $this->username, $this->password, $this->dbName);
-        if (!$connection) die('Could not connect to database!');
+        // Check connection
+        if ($connection->connect_errno) die('Could not connect to database!');
+
         $this->instance = $connection;
         return $this->instance;
     }
@@ -39,11 +41,32 @@ class Connection
         $implodeColumnKeys = implode(",", $getColumnsKeys);
 
         $getValues = array_values($dataArray);
+        // var_dump($getValues);
+        // exit;
         $implodeValues = "'" . implode("','", $getValues) . "'";
 
         $qry = "insert into $this->table (" . $implodeColumnKeys . ") values (" . $implodeValues . ")";
         $result = $this->instance->query($qry);
+        if (!$result) return false;
+
         return $this->instance->insert_id;
+    }
+    /**
+     * Update or Create if not exist
+     */
+    public function upsert($dataArr)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE ";
+        foreach ($dataArr as $key => $data) {
+            $query .= $key . "='" . $data . "' AND ";
+        }
+        $query .= " deleted_at IS NULL";
+        $result = $this->instance->query($query);
+        $result = mysqli_fetch_assoc($result);
+        //  return if data already exist
+        if ($result) return;
+        //  Create data
+        return $this->create($dataArr);
     }
     /**
      * Fetch all
@@ -61,7 +84,7 @@ class Connection
     /**
      * Search
      */
-    public function findOne($searchParam,$searchValue)
+    public function findOne($searchParam, $searchValue)
     {
         $query = "SELECT * FROM " . $this->table . " WHERE " . $searchParam . "='" . $searchValue . "' AND deleted_at IS NULL";
         $result = $this->instance->query($query);
