@@ -57,8 +57,8 @@ class TodoService
                 $message  .= "Please click <a href=" . $_ENV['FRONTEND_URL'] . "/todo/tid=" . $uuid . "> participate</a> inorder to collaborate.<br><br>";
                 $message  .= "Cheers<br/>";
                 $message  .= "<b>Gambio Team</b>";
-                $email = new EmailService();
-                // $email->sendMail($email, $message, $subject);
+                $mailer = new EmailService();
+                $mailer->sendMail($email, $message, $subject);
             }
         }
     }
@@ -130,26 +130,27 @@ class TodoService
         $todoId = $resource['todoId'];
         $deleteTask = $task->destroy($resource['id']);
         if ($deleteTask) {
-
+            $todoList = new Todo();
+            $todoItem = $todoList->findOne('id', $todoId);
             //  Notify Associated Participant
             $todoParticipant = new TodoParticipant();
             $allParticipants = $todoParticipant->findByValue('todoId', $todoId);
             foreach ($allParticipants as $participant) {
-                $todoParticipant->destroy($participant['id']);
-
                 //  Send email to collaborators
                 $subject = "Todo Task Update!";
                 $message  = "A task has been deleted from the todo list in which you are a collaborator.<br>";
                 $message  .= "Find the details of the deleted task below:<br><br>";
+                $message  .= "<h1><b>Todo List:</b> " . $todoItem['name'] . "</h1>";
                 $message  .= "<b>Task:</b> " . $resource['task'] . "<br>";
                 $message  .= "<b>Date Created:</b> " . date('d F, Y h:i', strtotime($resource['created_at'])) . "<br>";
                 if ($resource['updated_at']) $message  .= "<b>Last Updated:</b> " . date('d F, Y h:i', strtotime($resource['updated_at'])) . "<br>";
                 $message  .= "<b>Date Deleted:</b> " . date('d F, Y h:i') . "<br/><br/>";
                 $message  .= "<b>Gambio Team</b>";
-                $email = new EmailService();
-                // $email->sendMail($participant['participant_email'], $message, $subject);
-                return true;
+
+                $mailer = new EmailService();
+                $mailer->sendMail($participant['participant_email'], $message, $subject);
             }
+            return true;
         }
     }
 }

@@ -44,9 +44,4 @@ class EmailService extends PHPMailer
             return $errors['mail'] = "Failed. Mailer error: {$this->ErrorInfo}";
         }
     }
-    public function divideBy($num2)
-    {
-        if ($num2 == 0) return NAN;
-        return $this->getNumberFromUserInput() / $num2;
-    }
 }

@@ -5,8 +5,8 @@ require_once realpath("vendor/autoload.php");
 
 use Dotenv\Dotenv as ENV;
 
-// $dotenv = ENV::createImmutable(__DIR__);
-$dotenv = ENV::createImmutable(dirname(__FILE__));
+$dotenv = ENV::createImmutable(__DIR__);
+// $dotenv = ENV::createImmutable(dirname(__FILE__));
 $dotenv->load();
 
 use PHPUnit\Framework\TestCase;

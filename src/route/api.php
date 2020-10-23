@@ -113,20 +113,3 @@ $router->get($entry . '/todo/task/{taskId}/delete', function ($request) {
 $router->get($entry . '/{*}', function () {
     return json_encode(["message" => "Invalid API endpoint"]);
 });
-
-
-
-// $task = [
-//     "task" => "eat",
-//     "todoId" => 1
-// ];
-// $taskUpdate = [
-//     "task" => "drink",
-//     "status" => 1
-// ];
-// $participants = ["mustyzod@gmail.com", "zodbis@gmail.com"];
-// $todo = [
-//     "name" => "Mustapha 2",
-//     "description" => "this is a todo",
-//     "partcipants" => $participants
-// ];

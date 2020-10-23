@@ -5,7 +5,7 @@
  *
  * @author  Sodruldeen Mustapha <zodbis@gmail.com>
  */
-error_reporting(E_NOTICE);
+error_reporting(E_ALL & ~E_NOTICE);
 require_once realpath("vendor/autoload.php");
 
 use Dotenv\Dotenv as ENV;
