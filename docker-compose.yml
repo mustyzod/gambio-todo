@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 version: "2"
-=======
-version: "3"
->>>>>>> b55eec51fb1606d981d559d91f4a9ef6953c7750
 services:
   web:
     build:
@@ -18,7 +14,6 @@ services:
       - "443:443"
     volumes:
       - .:/var/www/html
-<<<<<<< HEAD
     depends_on:
       - db
   db:
@@ -35,22 +30,3 @@ services:
       - ./data/schema.sql:/docker-entrypoint-initdb.d/schema.sql
 volumes:
   mysql_data: { driver: local }
-=======
-#     depends_on:
-#       - db
-
-#   db:
-#     image: mysql:5.7
-#     ports:
-#       - "6603:3306"
-#     environment:
-#       - MYSQL_ROOT_PASSWORD=654321
-#       - MYSQL_USER=dbuser
-#       - MYSQL_PASSWORD=654321
-#       - MYSQL_DATABASE=gambioDb
-#     volumes:
-#       - "mysql_data:/var/lib/mysql"
-#       - ./data/schema.sql:/docker-entrypoint-initdb.d/schema.sql
-# volumes:
-#   mysql_data: { driver: local }
->>>>>>> b55eec51fb1606d981d559d91f4a9ef6953c7750
