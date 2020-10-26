@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc4b1398bd982b12afe7d3e7c57605f14
+class ComposerStaticInit6a881f86c994d6634f23d648ccb4c9a0
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
@@ -214,18 +214,18 @@ class ComposerStaticInitc4b1398bd982b12afe7d3e7c57605f14
         'Dotenv\\Util\\Regex' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Regex.php',
         'Dotenv\\Util\\Str' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Str.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
-        'Gambio\\Connections\\Connection' => __DIR__ . '/../..' . '/src/services/Database.php',
-        'Gambio\\Controllers\\TodoController' => __DIR__ . '/../..' . '/src/controllers/TodoController.php',
-        'Gambio\\Models\\Todo' => __DIR__ . '/../..' . '/src/model/Todo.model.php',
-        'Gambio\\Models\\TodoParticipant' => __DIR__ . '/../..' . '/src/model/TodoPartcipant.model.php',
-        'Gambio\\Models\\TodoTask' => __DIR__ . '/../..' . '/src/model/TodoTask.model.php',
-        'Gambio\\Router\\Body' => __DIR__ . '/../..' . '/src/route/Request.php',
-        'Gambio\\Router\\IRequest' => __DIR__ . '/../..' . '/src/route/IRequest.php',
-        'Gambio\\Router\\Request' => __DIR__ . '/../..' . '/src/route/Request.php',
-        'Gambio\\Router\\Response' => __DIR__ . '/../..' . '/src/route/Response.php',
-        'Gambio\\Router\\Router' => __DIR__ . '/../..' . '/src/route/Router.php',
-        'Gambio\\Services\\EmailService' => __DIR__ . '/../..' . '/src/services/EmailService.php',
-        'Gambio\\Services\\TodoService' => __DIR__ . '/../..' . '/src/services/TodoService.php',
+        'Gambio\\Controllers\\TodoController' => __DIR__ . '/../..' . '/src/Controllers/TodoController.php',
+        'Gambio\\Models\\Todo' => __DIR__ . '/../..' . '/src/Models/Todo.php',
+        'Gambio\\Models\\TodoParticipant' => __DIR__ . '/../..' . '/src/Models/TodoParticipant.php',
+        'Gambio\\Models\\TodoTask' => __DIR__ . '/../..' . '/src/Models/TodoTask.php',
+        'Gambio\\Router\\Body' => __DIR__ . '/../..' . '/src/Router/Request.php',
+        'Gambio\\Router\\IRequest' => __DIR__ . '/../..' . '/src/Router/IRequest.php',
+        'Gambio\\Router\\Request' => __DIR__ . '/../..' . '/src/Router/Request.php',
+        'Gambio\\Router\\Response' => __DIR__ . '/../..' . '/src/Router/Response.php',
+        'Gambio\\Router\\Router' => __DIR__ . '/../..' . '/src/Router/Router.php',
+        'Gambio\\Services\\Database' => __DIR__ . '/../..' . '/src/Services/Database.php',
+        'Gambio\\Services\\EmailService' => __DIR__ . '/../..' . '/src/Services/EmailService.php',
+        'Gambio\\Services\\TodoService' => __DIR__ . '/../..' . '/src/Services/TodoService.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
         'GrahamCampbell\\ResultType\\Result' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Result.php',
         'GrahamCampbell\\ResultType\\Success' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Success.php',
@@ -1126,9 +1126,9 @@ class ComposerStaticInitc4b1398bd982b12afe7d3e7c57605f14
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc4b1398bd982b12afe7d3e7c57605f14::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc4b1398bd982b12afe7d3e7c57605f14::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitc4b1398bd982b12afe7d3e7c57605f14::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6a881f86c994d6634f23d648ccb4c9a0::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6a881f86c994d6634f23d648ccb4c9a0::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6a881f86c994d6634f23d648ccb4c9a0::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Gambio\Connections;
+namespace Gambio\Services;
 
-class Connection
+class Database
 {
     protected $instance;
     private $dbName;

@@ -2,7 +2,7 @@
 
 namespace Gambio\Models;
 
-use Gambio\Connections\Connection as Database;
+use Gambio\Services\Database;
 
 class TodoParticipant extends Database
 {

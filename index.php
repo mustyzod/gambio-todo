@@ -7,6 +7,7 @@
 error_reporting(E_ALL & ~E_NOTICE);
 require_once realpath("vendor/autoload.php");
 
+
 use Dotenv\Dotenv as ENV;
 
 $dotenv = ENV::createImmutable(__DIR__);
@@ -28,4 +29,4 @@ header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Conte
 header("HTTP/1.1 200 OK");
 die();
 }
-require_once __DIR__ . '/src/route/api.php';
+require_once __DIR__ . '/src/Router/api.php';

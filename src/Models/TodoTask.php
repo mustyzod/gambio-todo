@@ -2,11 +2,11 @@
 
 namespace Gambio\Models;
 
-use Gambio\Connections\Connection as Database;
+use Gambio\Services\Database;
 
-class Todo extends Database
+class TodoTask extends Database
 {
-    private $table = 'todos';
+    private $table = 'todo_tasks';
 
     public function __construct()
     {
@@ -16,14 +16,17 @@ class Todo extends Database
 
     /**
      * Create table if not exist
+     * 
+     * @return void
      */
-    public function createIfNotExist()
+    public function createIfNotExist(): void
     {
         $sql = "CREATE TABLE IF NOT EXISTS $this->table (
             id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(30) NOT NULL,
-            description VARCHAR(50) NULL,
-            uuid VARCHAR(50),
+            task VARCHAR(30) NOT NULL,
+            todoId int(11),
+            status VARCHAR(30) DEFAULT 'incomplete',
+            deadline TIMESTAMP NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
             deleted_at TIMESTAMP NULL
@@ -31,5 +34,4 @@ class Todo extends Database
         $this->connect();
         mysqli_query($this->instance, $sql);
     }
-    
 }
