@@ -4,7 +4,11 @@
 
 namespace Composer\Autoload;
 
+<<<<<<< HEAD
 class ComposerStaticInita4594c86ff453b93fb18314eadcac5d1
+=======
+class ComposerStaticInitc4b1398bd982b12afe7d3e7c57605f14
+>>>>>>> b55eec51fb1606d981d559d91f4a9ef6953c7750
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
@@ -214,6 +218,7 @@ class ComposerStaticInita4594c86ff453b93fb18314eadcac5d1
         'Dotenv\\Util\\Regex' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Regex.php',
         'Dotenv\\Util\\Str' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Str.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+<<<<<<< HEAD
         'Gambio\\Controllers\\TodoController' => __DIR__ . '/../..' . '/src/controllers/TodoController.php',
         'Gambio\\Models\\Todo' => __DIR__ . '/../..' . '/src/models/Todo.model.php',
         'Gambio\\Models\\TodoParticipant' => __DIR__ . '/../..' . '/src/models/TodoPartcipant.model.php',
@@ -224,6 +229,18 @@ class ComposerStaticInita4594c86ff453b93fb18314eadcac5d1
         'Gambio\\Router\\Response' => __DIR__ . '/../..' . '/src/routeer/Response.php',
         'Gambio\\Router\\Router' => __DIR__ . '/../..' . '/src/routeer/Router.php',
         'Gambio\\Services\\Connection' => __DIR__ . '/../..' . '/src/services/Database.php',
+=======
+        'Gambio\\Connections\\Connection' => __DIR__ . '/../..' . '/src/services/Database.php',
+        'Gambio\\Controllers\\TodoController' => __DIR__ . '/../..' . '/src/controllers/TodoController.php',
+        'Gambio\\Models\\Todo' => __DIR__ . '/../..' . '/src/model/Todo.model.php',
+        'Gambio\\Models\\TodoParticipant' => __DIR__ . '/../..' . '/src/model/TodoPartcipant.model.php',
+        'Gambio\\Models\\TodoTask' => __DIR__ . '/../..' . '/src/model/TodoTask.model.php',
+        'Gambio\\Router\\Body' => __DIR__ . '/../..' . '/src/route/Request.php',
+        'Gambio\\Router\\IRequest' => __DIR__ . '/../..' . '/src/route/IRequest.php',
+        'Gambio\\Router\\Request' => __DIR__ . '/../..' . '/src/route/Request.php',
+        'Gambio\\Router\\Response' => __DIR__ . '/../..' . '/src/route/Response.php',
+        'Gambio\\Router\\Router' => __DIR__ . '/../..' . '/src/route/Router.php',
+>>>>>>> b55eec51fb1606d981d559d91f4a9ef6953c7750
         'Gambio\\Services\\EmailService' => __DIR__ . '/../..' . '/src/services/EmailService.php',
         'Gambio\\Services\\TodoService' => __DIR__ . '/../..' . '/src/services/TodoService.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
@@ -1126,9 +1143,15 @@ class ComposerStaticInita4594c86ff453b93fb18314eadcac5d1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInita4594c86ff453b93fb18314eadcac5d1::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInita4594c86ff453b93fb18314eadcac5d1::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInita4594c86ff453b93fb18314eadcac5d1::$classMap;
+=======
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc4b1398bd982b12afe7d3e7c57605f14::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc4b1398bd982b12afe7d3e7c57605f14::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc4b1398bd982b12afe7d3e7c57605f14::$classMap;
+>>>>>>> b55eec51fb1606d981d559d91f4a9ef6953c7750
 
         }, null, ClassLoader::class);
     }

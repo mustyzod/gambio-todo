@@ -77,6 +77,7 @@ return array(
     'Dotenv\\Util\\Regex' => $vendorDir . '/vlucas/phpdotenv/src/Util/Regex.php',
     'Dotenv\\Util\\Str' => $vendorDir . '/vlucas/phpdotenv/src/Util/Str.php',
     'Dotenv\\Validator' => $vendorDir . '/vlucas/phpdotenv/src/Validator.php',
+<<<<<<< HEAD
     'Gambio\\Controllers\\TodoController' => $baseDir . '/src/controllers/TodoController.php',
     'Gambio\\Models\\Todo' => $baseDir . '/src/models/Todo.model.php',
     'Gambio\\Models\\TodoParticipant' => $baseDir . '/src/models/TodoPartcipant.model.php',
@@ -87,6 +88,18 @@ return array(
     'Gambio\\Router\\Response' => $baseDir . '/src/routeer/Response.php',
     'Gambio\\Router\\Router' => $baseDir . '/src/routeer/Router.php',
     'Gambio\\Services\\Connection' => $baseDir . '/src/services/Database.php',
+=======
+    'Gambio\\Connections\\Connection' => $baseDir . '/src/services/Database.php',
+    'Gambio\\Controllers\\TodoController' => $baseDir . '/src/controllers/TodoController.php',
+    'Gambio\\Models\\Todo' => $baseDir . '/src/model/Todo.model.php',
+    'Gambio\\Models\\TodoParticipant' => $baseDir . '/src/model/TodoPartcipant.model.php',
+    'Gambio\\Models\\TodoTask' => $baseDir . '/src/model/TodoTask.model.php',
+    'Gambio\\Router\\Body' => $baseDir . '/src/route/Request.php',
+    'Gambio\\Router\\IRequest' => $baseDir . '/src/route/IRequest.php',
+    'Gambio\\Router\\Request' => $baseDir . '/src/route/Request.php',
+    'Gambio\\Router\\Response' => $baseDir . '/src/route/Response.php',
+    'Gambio\\Router\\Router' => $baseDir . '/src/route/Router.php',
+>>>>>>> b55eec51fb1606d981d559d91f4a9ef6953c7750
     'Gambio\\Services\\EmailService' => $baseDir . '/src/services/EmailService.php',
     'Gambio\\Services\\TodoService' => $baseDir . '/src/services/TodoService.php',
     'GrahamCampbell\\ResultType\\Error' => $vendorDir . '/graham-campbell/result-type/src/Error.php',
